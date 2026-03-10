@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+     <title>FGO pixiv画像検索</title>
+    
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+       header{background-color: black; padding: 25px 0; width: 100%;}
+
+       body { font-family: sans-serif; background-color: #f5f5f5; text-align: center; margin: 0;}
+
+       h1{color: #f5f5f5; margin: 0;}
+
+        .card{
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+       .servant {
+            background: white;
+            border-radius: 15px;
+            width: 187px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .serv-img {
+            width: 100%;
+            height: 300px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+    </style>
+  </head>
+  <body>
+    <header> 
+        <h1>Fate/GrandOrder ピクシブ検索</h1>    
+    </header>
+
+    <div class="card">
+        <div class="servant" onclick="search('マシュ・キリエライト')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/img/5b3c41d891bd46a227a365f9652a7b5d.png" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">マシュ・キリエライト</div>
+        </div>
+
+        <div class="servant" onclick="search('アルトリア・ペンドラゴン')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/img/8d18b23e04ce9c50686b402d786360da.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">アルトリア・ペンドラゴン</div>
+        </div>
+
+        <div class="servant" onclick="search('ネロ・クラウディウス')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/img/7968b336f7bf551a6d03155a9da81fcd.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">ネロ・クラウディウス</div>
+        </div>
+
+        <div class="servant" onclick="search('アルテラ(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/img/original_0ea1ec4259878e1c4325289f813ef429.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">アルテラ</div>
+        </div>
+
+        <div class="servant" onclick="search('アタランテ(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/img/original_0991fddd8f2687bf7d4fa1748a4c83e0.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">アタランテ</div>
+        </div>
+
+        <div class="servant" onclick="search('エウリュアレ(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/article_tools/fatego/gacha/ascension_015_4.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">エウリュアレ</div>
+        </div>
+
+        <div class="servant" onclick="search('エリザベート・バートリー(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/article_tools/fatego/gacha/ascension_453_4.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">エリザベート</div>
+        </div>
+
+        <div class="servant" onclick="search('メドゥーサ(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/article_tools/fatego/gacha/ascension_023_4.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">メドゥーサ</div>
+        </div>
+
+        <div class="servant" onclick="search('ブーディカ(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/article_tools/fatego/gacha/ascension_026_4.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">ブーディカ</div>
+        </div>
+
+        <div class="servant" onclick="search('牛若丸(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/img/d75e3be40a84ec396917d22214023a53.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">牛若丸</div>
+        </div>
+
+        <div class="servant" onclick="search('マリー・アントワネット(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/img/81a7fca3bab1e7732b3cb53748d630d7.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">マリー・アントワネット</div>
+        </div>
+
+        <div class="servant" onclick="search('ステンノ(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/article_tools/fatego/gacha/ascension_041_4.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">ステンノ</div>
+        </div>
+
+        <div class="servant" onclick="search('マルタ(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/img/1105a7906f9a082d00ea29ef01756e7b.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">マルタ</div>
+        </div>
+
+        <div class="servant" onclick="search('マタ・ハリ(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/article_tools/fatego/gacha/ascension_045_4.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">マタ・ハリ</div>
+        </div>
+
+        <div class="servant" onclick="search('清姫(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/img/c3c1e8fbb55a8c378add0d6383f75945.jpeg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">清姫</div>
+        </div>
+
+        <div class="servant" onclick="search('ジャンヌ・ダルク(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/img/a8b01cf9acf6618814abe291bb90bf44.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">ジャンヌ・ダルク</div>
+        </div>
+
+        <div class="servant" onclick="search('玉藻の前(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/img/91b0aba2332051ac0788b10fe1d52b58.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">玉藻の前</div>
+        </div>
+
+        <div class="servant" onclick="search('ドレイク(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/article_tools/fatego/gacha/ascension_065_4.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">ドレイク</div>
+        </div>
+
+        <div class="servant" onclick="search('沖田総司(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/img/65090d3e7c872af4f907fad37c41a30a.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">沖田総司</div>
+        </div>
+
+        <div class="servant" onclick="search('スカサハ(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/article_tools/fatego/gacha/ascension_070_4.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">スカサハ</div>
+        </div>
+
+        <div class="servant" onclick="search('ジャック(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/article_tools/fatego/gacha/ascension_075_4.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">ジャック</div>
+        </div>
+
+        <div class="servant" onclick="search('モードレッド(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/img/552de2ee836ec731bdc7c8640685aed9.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">モードレッド</div>
+        </div>
+
+        <div class="servant" onclick="search('両儀式')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/article_tools/fatego/gacha/ascension_091_4.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">両儀式</div>
+        </div>
+
+        <div class="servant" onclick="search('ナイチンゲール(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/article_tools/fatego/gacha/ascension_097_4.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">ナイチンゲール</div>
+        </div>
+
+        <div class="servant" onclick="search('メイヴ(Fate)')">
+            <div class="serv-img"><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT2rkDDMLGnGiskHxpEnJMjmRXVtASDtq82oRdj5OID87mkVyg2" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">女王メイヴ</div>
+        </div>
+
+        <div class="servant" onclick="search('ジャンヌ・オルタ')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/img/fd7db2b869f4fb8c860fc21759a8fa11.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">ジャンヌ・オルタ</div>
+        </div>
+
+        <div class="servant" onclick="search('酒呑童子(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/article_tools/fatego/gacha/ascension_225_4.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">酒呑童子</div>
+        </div>
+
+        <div class="servant" onclick="search('ダ・ヴィンチ(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/img/56d6bca883b521647b658a70cec3aac7.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">ダ・ヴィンチ</div>
+        </div>
+
+        <div class="servant" onclick="search('宮本武蔵(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/article_tools/fatego/gacha/ascension_153_4.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">宮本武蔵</div>
+        </div>
+
+        <div class="servant" onclick="search('BB(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/article_tools/fatego/gacha/ascension_166_4.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">BB</div>
+        </div>
+
+        <div class="servant" onclick="search('パッションリップ')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/article_tools/fatego/gacha/ascension_164_4.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">パッションリップ</div>
+        </div>
+
+        <div class="servant" onclick="search('イシュタル(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/article_tools/fatego/gacha/ascension_182_4.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">イシュタル</div>
+        </div>
+
+        <div class="servant" onclick="search('エレシュキガル(Fate)')">
+            <div class="serv-img"><img src="https://img.gamewith.jp/img/21c6ddb26a344f1757ec468e49c07fea.jpg" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">エレシュキガル</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">イリヤ</div>
+        </div>
+
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">美憂</div>
+        </div>
+
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">クロエ</div>
+        </div>
+
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">エルキドゥ</div>
+        </div>
+
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">謎のヒロインXX</div>
+        </div>
+
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">XXオルタ</div>
+        </div>
+
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">メルトリリス</div>
+        </div>
+
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">武則天</div>
+        </div>
+
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">源頼光</div>
+        </div>
+
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">アビゲイル</div>
+        </div>
+
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">葛飾北斎</div>
+        </div>
+
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">巴御前</div>
+        </div>
+
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">アナスタシア</div>
+        </div>
+
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">スカサハ⁼スカディ</div>
+        </div>
+
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">虞美人</div>
+        </div>
+
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">ブラダマンデ</div>
+        </div>
+
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">ケツァル・コアトル</div>
+        </div>
+
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">ジナコ</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">コルデー</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">エウロペ</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">清少納言</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">楊貴妃</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">宇津見エリセ</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">キャストリア</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">殺生院キアラ</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">紫式部</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">カレン</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">モルガン</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">バーゲスト</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">バーヴァンシー</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">メリュジーヌ</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">コヤンスカヤ</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">カーマ</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">ジャックドモレー</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">ゼノビア</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">出雲阿国</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">バゼット</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">ニキチッチ</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">アルクェイド</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">伊吹童子</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">ブリトマート</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">ラーヴァ/ティアマト</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">ドゥルガー</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">トネリコ</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">由井正雪</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">アンドロメダ</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">マリーオルタ</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">蒼崎青子</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">C.I.E.L</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">久遠寺有珠</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">徐福</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">テノチティトラン</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">岸波白野</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">カズラドロップ</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">ビショーネ</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">黒姫</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">小野小町</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">メタトロン・ジャンヌ</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">リリス</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">テュフォン</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">オルガマリー</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">クリームヒルト</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">呼延灼</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">河上彦斎</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">ロード・ログレス</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">蛇女房</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">フローラ</div>
+        </div>
+
+        <div class="servant" onclick="search('')">
+            <div class="serv-img"><img src="" alt="最終再臨絵" width="200" height="300"></div>
+            <div class="serv-name">デメテル</div>
+        </div>
+
+    <script>
+        function search(name) {
+            const url = "https://www.pixiv.net/tags/" + encodeURIComponent(name) + "/artworks";
+            window.open(url, '_blank');
+        }
+    </script>
+
+    </div>
+
+    <footer>
+        <h6>https://www.fate-go.jp/</h6>
+    </footer>
+
+  </body>
+</html>
